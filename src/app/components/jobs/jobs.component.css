@@ -1,0 +1,24 @@
+.collab-list {
+  padding: 25px;
+}
+.app-info {
+  padding: 20px;
+  padding: 20px 20px 0px;
+  display: flex;
+  gap: 15px;
+}
+.app-meta {
+  display: flex;
+  gap: 10px;
+}
+.search-container {
+  width: 400px;
+}
+
+.mat-button-toggle-group {
+  border: 1px solid #9d9da3;
+  border-radius: 15px;
+  height: 30px;
+  align-items: center;
+  color: #949faa;
+}

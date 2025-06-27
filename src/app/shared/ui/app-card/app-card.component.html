@@ -1,0 +1,48 @@
+<div *ngIf="app" class="card">
+    <div class="card__shine"></div>
+
+    <div class="card__content">
+        <!-- <div class="card__badge">NEW</div> -->
+        <div style="--bg-color: #a78bfa" [routerLink]="'app-info/'+app.id" class="card__image">
+            <img [src]="app.iconUrl" alt="Icon" />
+        </div>
+        <div class="card__text">
+            <p>
+                <a class="card__title" [routerLink]="'app-info/'+app.id">{{app.name}}</a>
+                <ng-container *ngIf="app.appCreators?.length">
+                    <span class="card__description">
+                        Insta: <a target="_blank" [href]="app.appCreators[0].creator.profileUrl">{{
+                            '@'+app.appCreators[0].creator.username}}</a>
+
+
+                    </span>
+                    <br>
+                    <span class="card__description">
+                        Reels: {{app.appCreatorMediaCount}}
+                    </span><br>
+                </ng-container>
+
+                <span class="card__description">
+                    Category: {{app.category}}
+
+                </span>
+            </p>
+            <!--             
+            <p class="card__description">
+                
+            </p> -->
+
+        </div>
+        <!-- <div>
+            fdsfs
+        </div> -->
+        <!-- <div class="card__footer">
+            <div class="card__price">$49.99</div>
+            <div class="card__button">
+                <svg height="16" width="16" viewBox="0 0 24 24">
+                    <path stroke-width="2" stroke="currentColor" d="M4 12H20M12 4V20" fill="currentColor"></path>
+                </svg>
+            </div>
+        </div> -->
+    </div>
+</div>

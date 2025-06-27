@@ -1,0 +1,10 @@
+.list-wrapper {
+  padding: 15px;
+  display: flex;
+  gap: 23px;
+  flex-wrap: wrap;
+  max-height: 550px;
+  min-height: 550px;
+  overflow: scroll;
+  align-content: flex-start;
+}

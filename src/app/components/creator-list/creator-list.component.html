@@ -1,0 +1,9 @@
+<div class="list-wrapper">
+
+    <div class="list-element" *ngFor="let creator of pagedItems">
+        <!-- <app-creator-card [creator]="creator"></app-creator-card> -->
+        <app-insta-card [creator]="creator" [scraped]="creator.collaoboratorsMedia.length"></app-insta-card>
+    </div>
+</div>
+<mat-paginator (page)="changePage($event)" showFirstLastButtons [length]="creators.length" [pageSize]="20"
+    [pageSizeOptions]="[20,30,40,50,100]"></mat-paginator>

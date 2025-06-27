@@ -1,0 +1,32 @@
+<div *ngIf="appInfo" class="info-container">
+    <div class="app-info">
+
+        <div class="app-meta">
+            <div>
+                <img style="width: 77px;border: 1px solid #00000042;    border-radius: 10px;" [src]="appInfo.iconUrl"
+                    alt="Icon" />
+            </div>
+            <span style="width :100%;">
+                <a target="_blank" [href]="appInfo.appStoreUrl"><strong>{{appInfo.name}}</strong></a><br>
+                <!-- <span *ngFor="let c of appInfo.appCreators">
+                    Instagram: <a target="_blank" [href]="c.profileUrl"><strong>{{'@'+c.username}}</strong></a><br>
+                </span> -->
+
+                <!-- <span *ngIf="influencers.length">Total Reels: {{influencers.length}}</span><br> -->
+                Developer: {{appInfo.developerName}}<br>
+                Category: {{appInfo.category}}
+            </span>
+
+        </div>
+        <div class="app-creators">
+            <div class="creator-card" *ngFor="let creator of appInfo.appCreators">
+                <ng-container *ngIf="creator.platform=='instagram'">
+                    <app-insta-card [creator]="creator" [scraped]="influencers.length"></app-insta-card>
+                </ng-container>
+            </div>
+        </div>
+
+    </div>
+    <div class="collab-list"><app-table [type]="'app'" [dataSource]="influencers"
+            [displayedColumns]="columns"></app-table></div>
+</div>

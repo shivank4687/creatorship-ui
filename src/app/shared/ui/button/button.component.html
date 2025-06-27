@@ -1,0 +1,8 @@
+<button *ngIf="text" [ngClass]="{ 'disabled-btn': disabled }" [disabled]="disabled">
+    <ng-container *ngIf="!disabled; else loading">
+        {{text}}
+    </ng-container>
+    <ng-template #loading>
+        <span class="spinner"></span> {{ text }}
+    </ng-template>
+</button>

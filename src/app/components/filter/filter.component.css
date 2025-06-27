@@ -1,0 +1,20 @@
+.mat-button-toggle-group {
+  border: 1px solid #9d9da3;
+  border-radius: 15px;
+  height: 30px;
+  align-items: center;
+  color: #949faa;
+}
+
+.toggle-container {
+  display: flex;
+  gap: 10px;
+}
+.filter-container {
+  gap: 10px;
+  padding: 15px;
+  display: flex;
+}
+.search-container {
+  width: 400px;
+}

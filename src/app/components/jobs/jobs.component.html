@@ -1,0 +1,21 @@
+<div class="info-container">
+
+    <div class="app-info">
+        <div>
+            <mat-button-toggle-group (change)="changeType($event)" [(ngModel)]="type" name="analysis"
+                aria-label="Font Style">
+
+                <mat-button-toggle style="border-right: 1px solid;" value="app">App</mat-button-toggle>
+                <mat-button-toggle value="creator">Creator</mat-button-toggle>
+
+            </mat-button-toggle-group>
+        </div>
+        <div class="search-container"><app-search (triggerSearch)="applySearch($event)" [resetSearch]="search_query"
+                placeholder="Search..."></app-search></div>
+
+
+    </div>
+    <div class="collab-list"><app-table [dataUpdate]="table_updates" (performAction)="performAction($event)"
+            [type]="'job'" [dataSource]="jobs" [displayedColumns]="columns"></app-table>
+    </div>
+</div>

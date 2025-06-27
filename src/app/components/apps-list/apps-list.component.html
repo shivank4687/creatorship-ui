@@ -1,0 +1,9 @@
+<div class="list-wrapper">
+
+    <div class="list-element" *ngFor="let app of pagedItems">
+        <app-app-card [app]="app"></app-app-card>
+    </div>
+
+</div>
+<mat-paginator (page)="changePage($event)" showFirstLastButtons [length]="apps.length" [pageSize]="20"
+    [pageSizeOptions]="[20,30,40,50]"></mat-paginator>

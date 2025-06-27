@@ -1,0 +1,27 @@
+<div class="filter-container">
+    <div class="toggle-container">
+        <mat-button-toggle-group (change)="onAnalysisChange($event,'analysis')" [(ngModel)]="filter.analysis"
+            name="analysis" aria-label="Font Style">
+
+            <mat-button-toggle style="border-right: 1px solid;" value="app">App</mat-button-toggle>
+            <mat-button-toggle value="creator">Creator</mat-button-toggle>
+
+        </mat-button-toggle-group>
+
+
+
+    </div>
+
+    <div class="search-container"><app-search (triggerSearch)="applySearch($event)"
+            [resetSearch]="this.filter.search_query" [placeholder]="search_placeholder"></app-search></div>
+    <div *ngIf="filter.analysis=='app'">
+        <ng-container>
+            <mat-button-toggle-group (change)="onAnalysisChange($event,'analysis')" [(ngModel)]="filter.country"
+                name="country" aria-label="Font Style">
+                <mat-button-toggle style="border-right: 1px solid;" value="in">IN</mat-button-toggle>
+                <mat-button-toggle value="us">US</mat-button-toggle>
+
+            </mat-button-toggle-group>
+        </ng-container>
+    </div>
+</div>

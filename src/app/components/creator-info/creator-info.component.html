@@ -1,0 +1,16 @@
+<div *ngIf="creatorInfo" class="info-container">
+    <div class="app-info">
+
+        <div class="app-meta">
+            <ng-container *ngIf="creatorInfo.platform=='instagram'">
+                <app-insta-card [width]="665" [creator]="creatorInfo" [detail_page]="true"
+                    [scraped]="creatorInfo.collaoboratorsMedia.length"></app-insta-card>
+            </ng-container>
+
+        </div>
+
+    </div>
+    <div class="collab-list"><app-table [type]="'creator'" [dataSource]="media"
+            [displayedColumns]="columns"></app-table>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+.breadcrumb-wrapper {
+  font-size: 14px;
+  margin-bottom: 1rem;
+}
+.breadcrumb {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "›";
+  padding: 0 8px;
+  color: #888;
+}
+.breadcrumb-item.active {
+  font-weight: bold;
+}
+.breadcrumb-item a {
+  text-decoration: none;
+  color: #007bff;
+}

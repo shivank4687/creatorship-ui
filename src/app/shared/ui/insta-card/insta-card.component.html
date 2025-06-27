@@ -1,0 +1,60 @@
+<div *ngIf="creator" class="card" [style.width.px]="width">
+    <!-- <div class="card__shine"></div> -->
+    <div *ngIf="showHeader" class="card__platform-header" [ngClass]="creator.platform">
+        {{ creator.platform | titlecase }}
+    </div>
+    <div class="card__content">
+        <div style="--bg-color: #a78bfa" [routerLink]="['../creator-info', creator.id]" class="card__image">
+            <img (click)="openCreator()" style="cursor: pointer;"
+                [src]="'http://localhost:3000' + creator.profilePictureUrl" alt="Icon" />
+        </div>
+
+        <!-- <div class="card__badge">NEW</div> -->
+        <!-- [routerLink]="'creator-info/'+creator.id" -->
+        <div class="card__text">
+            <p class="card__title"><a (click)="openCreator()">{{creator.username}}</a></p>
+            <p class="card__description"><a target="_blank" [href]="creator.profileUrl">Open in Instagram</a></p>
+            <p class="card__description" *ngIf="detail_page">Bio: {{creator.bio}}</p>
+            <div class="engagement">
+                <span>
+                    <p>Followers</p>
+                    <p>{{creator.followers | numberFormatter}}</p>
+
+                </span>
+                <span *ngIf="detail_page" class="divider"></span>
+                <span *ngIf="detail_page">
+                    <p>Following</p>
+                    <p>{{creator.following | numberFormatter}}</p>
+
+                </span>
+
+                <span class="divider"></span>
+                <span>
+                    <p>Reels</p>
+                    <p>{{scraped | numberFormatter}}</p>
+                </span>
+                <span class="divider"></span>
+                <span>
+                    <p>Total Content</p>
+                    <p>{{creator.totalPosts | numberFormatter}}</p>
+                </span>
+                <ng-container *ngIf="detail_page">
+                    <span class="divider"></span>
+                    <span>
+                        <p> Collaborations</p>
+                        <p>{{'coming soon'}}</p>
+                    </span>
+                    <span class="divider"></span>
+                    <span>
+                        <p>Own Content</p>
+                        <p>{{"coming soon"}}</p>
+                    </span>
+                </ng-container>
+
+            </div>
+
+
+            <!-- <p class="card__description">Hover to reveal stunning effects</p> -->
+        </div>
+    </div>
+</div>
