@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { api_url } from '../../../../environment';
 import { NumberFormatterPipe } from '../../pipes/number-formatter.pipe';
 
 @Component({
@@ -11,6 +12,7 @@ import { NumberFormatterPipe } from '../../pipes/number-formatter.pipe';
   styleUrl: './insta-card.component.css',
 })
 export class InstaCardComponent {
+  server_url = api_url.slice(0, -1);
   @Input() showHeader: boolean = true;
   @Input() scraped: any = 0;
   @Input() detail_page: any = false;

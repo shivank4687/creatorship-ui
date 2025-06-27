@@ -5,8 +5,8 @@
     </div>
     <div class="card__content">
         <div style="--bg-color: #a78bfa" [routerLink]="['../creator-info', creator.id]" class="card__image">
-            <img (click)="openCreator()" style="cursor: pointer;"
-                [src]="'http://localhost:3000' + creator.profilePictureUrl" alt="Icon" />
+            <img (click)="openCreator()" style="cursor: pointer;" [src]="server_url + creator.profilePictureUrl"
+                alt="Icon" />
         </div>
 
         <!-- <div class="card__badge">NEW</div> -->
