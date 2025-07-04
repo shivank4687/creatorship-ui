@@ -3,25 +3,49 @@
         <mat-button-toggle-group (change)="onAnalysisChange($event,'analysis')" [(ngModel)]="filter.analysis"
             name="analysis" aria-label="Font Style">
 
-            <mat-button-toggle style="border-right: 1px solid;" value="app">App</mat-button-toggle>
+            <mat-button-toggle value="app">App</mat-button-toggle>
             <mat-button-toggle value="creator">Creator</mat-button-toggle>
+            <mat-button-toggle disabled value="content">Content</mat-button-toggle>
 
         </mat-button-toggle-group>
 
 
 
     </div>
-
+    <!-- [resetSearch]="this.filter.search_query" -->
     <div class="search-container"><app-search (triggerSearch)="applySearch($event)"
-            [resetSearch]="this.filter.search_query" [placeholder]="search_placeholder"></app-search></div>
+            [placeholder]="search_placeholder"></app-search></div>
     <div *ngIf="filter.analysis=='app'">
         <ng-container>
             <mat-button-toggle-group (change)="onAnalysisChange($event,'analysis')" [(ngModel)]="filter.country"
                 name="country" aria-label="Font Style">
-                <mat-button-toggle style="border-right: 1px solid;" value="in">IN</mat-button-toggle>
+                <mat-button-toggle value="">All</mat-button-toggle>
+                <mat-button-toggle value="in">IN</mat-button-toggle>
                 <mat-button-toggle value="us">US</mat-button-toggle>
 
             </mat-button-toggle-group>
         </ng-container>
     </div>
+    <div *ngIf="filter.analysis=='creator'">
+        <ng-container>
+            <mat-button-toggle-group (change)="onAnalysisChange($event,'analysis')" [(ngModel)]="filter.platform"
+                name="country" aria-label="Font Style">
+
+                <mat-button-toggle value="insta">Instagram</mat-button-toggle>
+                <mat-button-toggle disabled value="fb">Facebook</mat-button-toggle>
+
+                <mat-button-toggle disabled value="yt">Youtube</mat-button-toggle>
+                <mat-button-toggle disabled value="sc">Snapchat</mat-button-toggle>
+                <mat-button-toggle disabled value="fb">Threads</mat-button-toggle>
+                <mat-button-toggle disabled value="pin">Pinterest</mat-button-toggle>
+
+
+            </mat-button-toggle-group>
+        </ng-container>
+    </div>
+    <ng-container *ngIf="admin">
+        <div class="create-button"><app-button (click)="create()" text="Create"></app-button></div>
+    </ng-container>
+
+
 </div>

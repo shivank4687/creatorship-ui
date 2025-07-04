@@ -1,0 +1,15 @@
+<div class="modal-box">
+    <div class="form-selection">
+        <app-button-toggle (selectionChanged)="changeForm($event)" [buttons]="form_types"
+            [selected]="selected_form"></app-button-toggle>
+    </div>
+    <div class="search-container"><app-search (triggerSearch)="applySearch($event)" [placeholder]="'Apps'"></app-search>
+    </div>
+    <div class="form-container">
+        <app-input *ngFor="let f of form" [placeholder]="f.placeholder"></app-input>
+    </div>
+    <div class="action-buttons">
+        <app-button (click)="submit()" text="Submit"></app-button>
+    </div>
+
+</div>

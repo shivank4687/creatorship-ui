@@ -18,7 +18,10 @@
                     </span>
                     <br>
                     <span class="card__description">
-                        Reels: {{app.appCreatorMediaCount}}
+                        Total Content: {{app.appCreators[0].creator.totalPosts||0}}
+                    </span><br>
+                    <span class="card__description">
+                        We Have: {{app.appCreatorMediaCount}}
                     </span><br>
                 </ng-container>
 

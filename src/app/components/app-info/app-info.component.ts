@@ -6,6 +6,8 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AppService } from '../../services/app.service';
@@ -15,18 +17,27 @@ import { TableComponent } from '../../shared/ui/table/table.component';
 @Component({
   selector: 'app-app-info',
   standalone: true,
-  imports: [TableComponent, MatCardModule, CommonModule, InstaCardComponent],
+  imports: [
+    TableComponent,
+    MatButtonToggleModule,
+    FormsModule,
+    MatCardModule,
+    CommonModule,
+    InstaCardComponent,
+  ],
   templateUrl: './app-info.component.html',
   styleUrl: './app-info.component.css',
 })
 export class AppInfoComponent implements OnInit, OnChanges {
   private route = inject(ActivatedRoute);
+  date_range: number = 15;
   id!: number;
   appInfo!: any;
   columns = [
     'content',
     'influencer',
     'collabs',
+    'mediaType',
     'likes',
     'views',
     'comments',
@@ -44,7 +55,10 @@ export class AppInfoComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {}
 
   async getAppInfo() {
-    let info: any = await this.appService.appInfo({ app_id: this.id });
+    let info: any = await this.appService.appInfo({
+      app_id: this.id,
+      date_range: this.date_range,
+    });
     info.appCreators = info.appCreators.map((e: any) => e.creator);
 
     this.appInfo = info;
@@ -59,6 +73,7 @@ export class AppInfoComponent implements OnInit, OnChanges {
         comments,
         views,
         caption,
+        mediaType,
         tags,
         content,
       } = media;
@@ -74,6 +89,7 @@ export class AppInfoComponent implements OnInit, OnChanges {
       return {
         content,
         influencer,
+        mediaType,
         likes: extractNumber(likes || ''),
         actual_likes: likes,
         comments: extractNumber(comments || ''),
@@ -88,6 +104,9 @@ export class AppInfoComponent implements OnInit, OnChanges {
         publishedDate,
       };
     });
+  }
+  changeDateRange(event: any) {
+    this.getAppInfo();
   }
 }
 

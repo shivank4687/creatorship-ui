@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { api_url } from '../../../../environment';
 import { NumberFormatterPipe } from '../../pipes/number-formatter.pipe';
-
+import { isProduction, client_url } from '../../../../environment';
 @Component({
   selector: 'app-insta-card',
   standalone: true,
@@ -12,6 +12,7 @@ import { NumberFormatterPipe } from '../../pipes/number-formatter.pipe';
   styleUrl: './insta-card.component.css',
 })
 export class InstaCardComponent {
+  client_asset_url = client_url;
   server_url = api_url.slice(0, -1);
   @Input() showHeader: boolean = true;
   @Input() scraped: any = 0;

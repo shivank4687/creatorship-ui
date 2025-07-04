@@ -74,3 +74,16 @@
   color: rgb(59 130 246);
   border: 1px rgb(59 130 246) solid;
 }
+
+.media-wrapper {
+  max-width: 200px; /* control full block size */
+  margin: auto; /* center on page with spacing */
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+.media-embed-crop {
+  /* transform: scale(1);  */
+  /* transform-origin: top center; */
+}

@@ -4,10 +4,40 @@
 .app-info {
   padding: 20px;
   display: flex;
+  justify-content: space-between;
   gap: 80px;
   padding: 20px 20px 0px;
 }
 .app-meta {
   display: flex;
   gap: 10px;
+}
+
+.mat-button-toggle-group {
+  /* border: 1px solid #9d9da3; */
+  border-radius: 15px;
+  height: 30px;
+  align-items: center;
+  color: #949faa;
+}
+.toggle-container {
+  display: flex;
+  gap: 10px;
+  padding-right: 12px;
+}
+
+.date-range {
+  margin-top: auto;
+}
+
+mat-button-toggle {
+  color: #1e293b;
+
+  font-size: 14px;
+  margin: 0;
+  opacity: 0.7;
+}
+.app-wrapper {
+  display: flex;
+  gap: 40px;
 }

@@ -1,5 +1,5 @@
 .mat-button-toggle-group {
-  border: 1px solid #9d9da3;
+  /* border: 1px solid #9d9da3; */
   border-radius: 15px;
   height: 30px;
   align-items: center;
@@ -17,4 +17,17 @@
 }
 .search-container {
   width: 400px;
+}
+
+mat-button-toggle {
+  color: #1e293b;
+
+  font-size: 14px;
+  margin: 0;
+  opacity: 0.7;
+}
+
+.create-button {
+  margin-left: auto;
+  padding-right: 20px;
 }

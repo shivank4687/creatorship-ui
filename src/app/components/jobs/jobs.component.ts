@@ -20,6 +20,17 @@ const JOB_COLUMNS: any = {
     'jobMode',
     'time_consumed',
   ],
+  media: [
+    'id',
+    'creator',
+    'type',
+    'status',
+    'postsScraped',
+    'runCount',
+    'postslimit',
+    'jobMode',
+    'time_consumed',
+  ],
 };
 
 @Component({
@@ -36,7 +47,7 @@ const JOB_COLUMNS: any = {
   styleUrl: './jobs.component.css',
 })
 export class JobsComponent implements OnInit {
-  fetched_jobs: any = { app: [], creator: [] };
+  fetched_jobs: any = { app: [], creator: [], media: [] };
   search_query = '';
   type: any = 'app';
   jobs: any = [];
@@ -92,9 +103,10 @@ export class JobsComponent implements OnInit {
   }
 
   applySearch(event: any) {
+    let search_query = event;
     this.search_query = event;
     this.jobs = this.all_jobs.filter((job: any) => {
-      const query = this.search_query.toLowerCase();
+      const query = search_query.toLowerCase();
       if (this.type == 'app') {
         return (
           job.type.toLowerCase().includes(query) ||

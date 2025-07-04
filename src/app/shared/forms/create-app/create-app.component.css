@@ -1,0 +1,20 @@
+.modal-box {
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-selection {
+  text-align: center;
+}
+
+.form-container {
+  /* padding-top: 10px; */
+}
+
+.action-buttons {
+  margin-top: auto;
+  text-align: center;
+}

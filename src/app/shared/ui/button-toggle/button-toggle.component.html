@@ -1,0 +1,19 @@
+<div class="toggle-container">
+    <div class="fancy-bg"></div>
+    <mat-button-toggle-group (change)="toggle($event)" [(ngModel)]="selected" name="analysis" aria-label="Font Style">
+
+        <mat-button-toggle *ngFor="let button of buttons; let i = index" [class.first-button]="i==0"
+            [value]="button.value">{{button.name}}</mat-button-toggle>
+        <div class="fancy-bg"></div>
+        <!-- <mat-button-toggle value="28">28d</mat-button-toggle>
+        <mat-button-toggle value="45">45d</mat-button-toggle>
+        <mat-button-toggle value="60">60d</mat-button-toggle>
+        <mat-button-toggle value="90">90d</mat-button-toggle>
+        <mat-button-toggle value="120">120d</mat-button-toggle>
+        <mat-button-toggle value="0">All</mat-button-toggle> -->
+
+    </mat-button-toggle-group>
+
+
+
+</div>

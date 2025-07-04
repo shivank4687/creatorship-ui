@@ -2,22 +2,39 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CreatorService } from '../../services/creator.service';
+import { ButtonToggleComponent } from '../../shared/ui/button-toggle/button-toggle.component';
 import { InstaCardComponent } from '../../shared/ui/insta-card/insta-card.component';
 import { TableComponent } from '../../shared/ui/table/table.component';
 
 @Component({
   selector: 'app-creator-info',
   standalone: true,
-  imports: [TableComponent, InstaCardComponent, CommonModule],
+  imports: [
+    TableComponent,
+    ButtonToggleComponent,
+    InstaCardComponent,
+    CommonModule,
+  ],
   templateUrl: './creator-info.component.html',
   styleUrl: './creator-info.component.css',
 })
 export class CreatorInfoComponent implements OnInit {
   id!: number;
   creatorInfo!: any;
+  date_range: number = 15;
+  date_buttons = [
+    { name: '15d', value: 15 },
+    { name: '30d', value: 30 },
+    { name: '45d', value: 45 },
+    { name: '60d', value: 60 },
+    { name: '90d', value: 90 },
+    { name: '120d', value: 120 },
+    { name: 'All', value: 0 },
+  ];
   columns = [
     'content',
     'collaborations',
+    'mediaType',
     'likes',
     'views',
     'comments',
@@ -35,6 +52,7 @@ export class CreatorInfoComponent implements OnInit {
   async getCreatorInfo() {
     this.creatorInfo = await this.creatorService.creatorInfo({
       creator_id: this.id,
+      date_range: this.date_range,
     });
     const { collaoboratorsMedia: media } = this.creatorInfo;
     this.media = media.map((cm: any) => {
@@ -45,6 +63,7 @@ export class CreatorInfoComponent implements OnInit {
         collaborators,
         views,
         caption,
+        mediaType,
         tags,
         content,
       } = cm.media;
@@ -53,6 +72,7 @@ export class CreatorInfoComponent implements OnInit {
       return {
         content,
         collaborations,
+        mediaType,
         likes: extractNumber(likes || ''),
         actual_likes: likes,
         comments: extractNumber(comments || ''),
@@ -66,7 +86,13 @@ export class CreatorInfoComponent implements OnInit {
       };
     });
   }
+
+  changeDateRange(value: any) {
+    this.date_range = value;
+    this.getCreatorInfo();
+  }
 }
+
 function extractNumber(str: string): number {
   // Case 1: If string contains commas like "1,23,445 comments"
   if (str.includes(',')) {

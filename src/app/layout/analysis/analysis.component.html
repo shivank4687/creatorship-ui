@@ -1,7 +1,9 @@
 <div class="analysis-container">
 
     <app-filter (changeFilter)="applyFilter($event)"></app-filter>
-    <div> <app-apps-list *ngIf="analysis_type=='app'" [params]="params">
+    <div>
+
+        <app-apps-list *ngIf="analysis_type=='app'" [params]="params">
 
         </app-apps-list>
         <app-creator-list *ngIf="analysis_type=='creator'" [params]="params">

@@ -1,28 +1,49 @@
 <div *ngIf="appInfo" class="info-container">
     <div class="app-info">
 
-        <div class="app-meta">
-            <div>
-                <img style="width: 77px;border: 1px solid #00000042;    border-radius: 10px;" [src]="appInfo.iconUrl"
-                    alt="Icon" />
+        <div class="app-wrapper">
+            <div class="app-meta">
+                <div>
+                    <img style="width: 77px;border: 1px solid #00000042;    border-radius: 10px;"
+                        [src]="appInfo.iconUrl" alt="Icon" />
+                </div>
+                <span style="width :100%;">
+                    <a target="_blank" [href]="appInfo.appStoreUrl"><strong>{{appInfo.name}}</strong></a><br>
+                    <!-- <span *ngFor="let c of appInfo.appCreators">
+                        Instagram: <a target="_blank" [href]="c.profileUrl"><strong>{{'@'+c.username}}</strong></a><br>
+                    </span> -->
+
+                    <!-- <span *ngIf="influencers.length">Total Reels: {{influencers.length}}</span><br> -->
+                    Developer: {{appInfo.developerName}}<br>
+                    Category: {{appInfo.category}}
+                </span>
+
             </div>
-            <span style="width :100%;">
-                <a target="_blank" [href]="appInfo.appStoreUrl"><strong>{{appInfo.name}}</strong></a><br>
-                <!-- <span *ngFor="let c of appInfo.appCreators">
-                    Instagram: <a target="_blank" [href]="c.profileUrl"><strong>{{'@'+c.username}}</strong></a><br>
-                </span> -->
-
-                <!-- <span *ngIf="influencers.length">Total Reels: {{influencers.length}}</span><br> -->
-                Developer: {{appInfo.developerName}}<br>
-                Category: {{appInfo.category}}
-            </span>
-
+            <div class="app-creators">
+                <div class="creator-card" *ngFor="let creator of appInfo.appCreators">
+                    <ng-container *ngIf="creator.platform=='instagram'">
+                        <app-insta-card [creator]="creator" [scraped]="appInfo.appCreatorMediaCount"></app-insta-card>
+                    </ng-container>
+                </div>
+            </div>
         </div>
-        <div class="app-creators">
-            <div class="creator-card" *ngFor="let creator of appInfo.appCreators">
-                <ng-container *ngIf="creator.platform=='instagram'">
-                    <app-insta-card [creator]="creator" [scraped]="influencers.length"></app-insta-card>
-                </ng-container>
+        <div class="date-range">
+            <div class="toggle-container">
+                <mat-button-toggle-group (change)="changeDateRange($event)" [(ngModel)]="date_range" name="analysis"
+                    aria-label="Font Style">
+
+                    <mat-button-toggle [value]="15">15d</mat-button-toggle>
+                    <mat-button-toggle [value]="28">28d</mat-button-toggle>
+                    <mat-button-toggle [value]="45">45d</mat-button-toggle>
+                    <mat-button-toggle [value]="60">60d</mat-button-toggle>
+                    <mat-button-toggle [value]="90">90d</mat-button-toggle>
+                    <mat-button-toggle [value]="120">120d</mat-button-toggle>
+                    <mat-button-toggle [value]="0">All</mat-button-toggle>
+
+                </mat-button-toggle-group>
+
+
+
             </div>
         </div>
 

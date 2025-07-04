@@ -1,6 +1,9 @@
 <form class="form">
+
+    <!-- <div class="search-container"> -->
     <label for="search">
-        <input class="input" type="text" (keyup)="applySearch()" name="search_text" [(ngModel)]="search_text"
+        <input #searchInput class="input" type="text" (keyup)="applySearch()" name="search_text"
+            [(ngModel)]="search_text" (focusout)="toggleDropdown(false)" (focusin)="toggleDropdown(true)"
             [placeholder]="'Search '+placeholder">
         <div class="fancy-bg"></div>
         <div class="search">
@@ -22,4 +25,11 @@
             </svg>
         </button>
     </label>
+    <ul id="search-menu" class="dropdown hidden">
+        dsfsdf
+        fsdfsd
+        <!-- JS will populate items here -->
+    </ul>
+    <!-- </div> -->
+
 </form>

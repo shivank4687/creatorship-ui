@@ -7,7 +7,8 @@
             <img [src]="app.iconUrl" alt="Icon" />
         </div> -->
         <div class="card__text">
-            <p class="card__title"><a [routerLink]="'creator-info/'+creator.id">{{creator.username}}</a></p>
+            <p class="card__title"><a [routerLink]="'creator-info/'+creator.id">{{creator.username}}</a>
+            </p>
 
             <p class="card__description"><a target="_blank" [href]="creator.profileUrl">Instagram Profile</a></p>
             <p class="card__description">{{creator.platform}}</p>

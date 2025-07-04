@@ -129,6 +129,13 @@
   background-color: #068cecd4;
 }
 
+.verified-badge {
+  height: 15px;
+  /* margin-top: 0px; */
+  position: relative;
+  top: 2px;
+  padding-left: 3px;
+}
 .card__platform-header.youtube {
   background-color: #ff0000;
 }
@@ -138,7 +145,7 @@
 }
 
 .engagement {
-  width: 94%;
+  width: 99%;
   padding-top: 6px;
   display: flex;
   line-height: 0.4;
@@ -152,4 +159,8 @@
   width: 1px;
   height: 24px;
   background-color: #ccc;
+}
+
+.metric-value {
+  text-align: center;
 }

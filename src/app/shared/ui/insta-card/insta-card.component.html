@@ -12,42 +12,44 @@
         <!-- <div class="card__badge">NEW</div> -->
         <!-- [routerLink]="'creator-info/'+creator.id" -->
         <div class="card__text">
-            <p class="card__title"><a (click)="openCreator()">{{creator.username}}</a></p>
+            <p class="card__title"><a (click)="openCreator()">{{creator.username}}</a><img *ngIf="creator.verified"
+                    class="verified-badge" src="{{client_asset_url}}assets/verified.png"></p>
             <p class="card__description"><a target="_blank" [href]="creator.profileUrl">Open in Instagram</a></p>
             <p class="card__description" *ngIf="detail_page">Bio: {{creator.bio}}</p>
+            <!-- <p class="card__description" *ngIf="detail_page &&creator.location">Adress: {{creator.location}}</p> -->
             <div class="engagement">
                 <span>
                     <p>Followers</p>
-                    <p>{{creator.followers | numberFormatter}}</p>
+                    <p class="metric-value">{{creator.followers | numberFormatter}}</p>
 
                 </span>
                 <span *ngIf="detail_page" class="divider"></span>
                 <span *ngIf="detail_page">
                     <p>Following</p>
-                    <p>{{creator.following | numberFormatter}}</p>
+                    <p class="metric-value">{{creator.following | numberFormatter}}</p>
 
-                </span>
-
-                <span class="divider"></span>
-                <span>
-                    <p>Reels</p>
-                    <p>{{scraped | numberFormatter}}</p>
                 </span>
                 <span class="divider"></span>
                 <span>
                     <p>Total Content</p>
-                    <p>{{creator.totalPosts | numberFormatter}}</p>
+                    <p class="metric-value">{{creator.totalPosts | numberFormatter}}</p>
                 </span>
+                <span class="divider"></span>
+                <span>
+                    <p>We Have</p>
+                    <p class="metric-value">{{scraped | numberFormatter}}</p>
+                </span>
+
                 <ng-container *ngIf="detail_page">
                     <span class="divider"></span>
                     <span>
                         <p> Collaborations</p>
-                        <p>{{'coming soon'}}</p>
+                        <p class="metric-value">{{'coming soon'}}</p>
                     </span>
                     <span class="divider"></span>
                     <span>
                         <p>Own Content</p>
-                        <p>{{"coming soon"}}</p>
+                        <p class="metric-value">{{"coming soon"}}</p>
                     </span>
                 </ng-container>
 

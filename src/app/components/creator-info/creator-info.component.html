@@ -1,14 +1,20 @@
 <div *ngIf="creatorInfo" class="info-container">
     <div class="app-info">
+        <div class="app-wrapper">
+            <div class="app-meta">
+                <ng-container *ngIf="creatorInfo.platform=='instagram'">
+                    <app-insta-card [width]="665" [creator]="creatorInfo" [detail_page]="true"
+                        [scraped]="creatorInfo.collaoboratorsMediaCount"></app-insta-card>
+                </ng-container>
 
-        <div class="app-meta">
-            <ng-container *ngIf="creatorInfo.platform=='instagram'">
-                <app-insta-card [width]="665" [creator]="creatorInfo" [detail_page]="true"
-                    [scraped]="creatorInfo.collaoboratorsMedia.length"></app-insta-card>
-            </ng-container>
-
+            </div>
         </div>
-
+        <div class="date-range">
+            <div class="toggle-container">
+                <app-button-toggle (selectionChanged)="changeDateRange($event)" [buttons]="date_buttons"
+                    [selected]="date_range"></app-button-toggle>
+            </div>
+        </div>
     </div>
     <div class="collab-list"><app-table [type]="'creator'" [dataSource]="media"
             [displayedColumns]="columns"></app-table>
